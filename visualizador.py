@@ -79,9 +79,9 @@ def metavisual(lb, ub, dim, numInd, numRun, optimizador, fobj):
             # ax.scatter(U, V)
             ax.set_xlim([lb[0], ub[0]])
             ax.set_ylim([lb[1], ub[1]])
-            plt.title("Iteración " + str(i) + " con " + str(numInd) + " individuos")
-            plt.xlabel("$x_1$", fontsize=16)
-            plt.ylabel("$x_2$", fontsize=16)
+            plt.title("Iteración " + str(i) + " con " + str(numInd) + " individuos", fontsize=20)
+            plt.xlabel("$x_1$", fontsize=20)
+            plt.ylabel("$x_2$", fontsize=20)
             plt.savefig(str(i) + ".png")
 
     nombre = 1
@@ -94,17 +94,21 @@ def metavisual(lb, ub, dim, numInd, numRun, optimizador, fobj):
     images = []
     for filename in filenames:
         images.append(imageio.imread(filename))
+        # Aquí se establece la ruta en la que se desean guardar las imágenes y la animación generadas.
     imageio.mimsave('/Users/oscarlara/Dropbox/proyectosGIT/MetaVisual/scripts/animacion.gif', images)
 
-
+# Aquí se establecen los datos que requiere Metaviz para funcionar.
+## Función objetivo
 fobj = f2
+# Límite superior (ub) e inferior (lb)
 lb = np.array([-500, -500])
 ub = np.array([500, 500])
-
-
 dim = len(ub)
+## Número de individuos
 numInd = 8
+## Número de iteraciones
 numRun = 75
+# Seleccionar el optimizador a emplear
 optimizador = opt.cs
 
 metavisual(lb, ub, dim, numInd, numRun, optimizador, fobj)
